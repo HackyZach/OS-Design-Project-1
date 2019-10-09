@@ -26,12 +26,11 @@ end
 
 server.add_handler '_in' do |t|
   ts.take(t)
-  "OK"
+
 end
 
 server.add_handler '_rd' do |t|
   ts.read(t)
-  "OK"
 end
 
 puts "Starting Server..."
