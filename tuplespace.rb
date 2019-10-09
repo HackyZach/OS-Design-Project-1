@@ -3,7 +3,7 @@ require 'rinda/tuplespace'
 
 puts "Begin"
 
-URI = "druby://localhost:5005"
+URI = "druby://localhost:8000"
 
 puts "Start service"
 

@@ -1,17 +1,16 @@
 import xmlrpc.client
 
-proxy = xmlrpc.client.ServerProxy("http://localhost:5000")
+with xmlrpc.client.ServerProxy("http://localhost:5000/", allow_none=True) as proxy:
+    print("Proxy made...")
 
-print("Proxy made...")
+    tuples = [
+      ["bob","distsys","I am studying chapter 2"],
+      ["bob","distsys","The rinda exmaple's not that simple"]
+    ]
 
-tuples = [
-  ["bob","distsys","I am studying chapter 2"],
-  ["bob","distsys","The rinda exmaple's not that simple"]
-]
+    print("Tuples Ready...")
 
-print("Tuples Ready...")
+    proxy._out(tuples[0])
+    proxy._out(tuples[1])
 
-proxy._out(tuples[0])
-proxy._out(tuples[1])
-
-print("Tuples Sent...")
+    print("Tuples Sent...")
