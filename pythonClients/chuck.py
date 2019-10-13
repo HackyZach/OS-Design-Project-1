@@ -7,8 +7,9 @@ proxy = xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True)
 
 print("Waiting on tuples...")
 
-res = proxy._in(["bob", None, None])
-res2 = proxy._in([None, "distsys", None])
+res = proxy._in(["bob", { 'class': 'String' }, { 'class': 'String' }])
+#res2 = proxy._in([str, "distsys", str])
+#res3 = proxy._in([str, "distsys", None])
 
 print(res)
 print(res2)

@@ -12,6 +12,8 @@ arguments = [
     proxy._in([None, None, None]),
 ]
 
+print("Tuples received...")
+
 result = []
 lhs = 0
 rhs = 0
@@ -31,9 +33,9 @@ for equation in arguments:
     else:
         lhs = "Invalid operator"
 
-    result.append(lhs + " = " + rhs)
+    result.append([(lhs + " = " + rhs),"eqRes"])
 
 for complete_equation in result:
-    print(complete_equation)
+    proxy._out(complete_equation)
 
-print("Tuples received...")
+print("Tuples computed and sent back...")

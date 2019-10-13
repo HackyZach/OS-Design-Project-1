@@ -12,6 +12,7 @@ suppress_warnings do
     XMLRPC::Config::ENABLE_NIL_PARSER = true
     XMLRPC::Config::ENABLE_NIL_CREATE = true
 end
+# End code to allow nil
 
 server = XMLRPC::Server.new(5000)
 
@@ -25,6 +26,7 @@ server.add_handler '_out' do |t|
 end
 
 server.add_handler '_in' do |t|
+  
   ts.take(t)
 
 end

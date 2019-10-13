@@ -11,6 +11,7 @@ with xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True) as prox
       ["^", 10, 4],
     ]
 
+    tupleResAbstract = [None,"eqRes"]
     print("Tuples Ready...")
 
     proxy._out(tuples[0])
@@ -20,3 +21,9 @@ with xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True) as prox
     proxy._out(tuples[4])
 
     print("Tuples Sent...")
+
+    print(proxy._in(tupleResAbstract))
+    print(proxy._in(tupleResAbstract))
+    print(proxy._in(tupleResAbstract))
+    print(proxy._in(tupleResAbstract))
+    print(proxy._in(tupleResAbstract))
