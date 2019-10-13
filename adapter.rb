@@ -26,13 +26,37 @@ server.add_handler '_out' do |t|
 end
 
 server.add_handler '_in' do |t|
-  
-  ts.take(t)
+  puts t.class
+  t_after = []
+  puts t_after.class
+  puts "What we started with:"
+  puts t
+  for i in t
+    puts "THIs is the current value"
+    puts i
+    if(i.instance_of? Hash)
+      i = Module.const_get(i["class"])
+    end
+    puts i
+    t_after.append(i)
+  end
+  puts "THis is the t values"
+  puts t
+  puts "THis is the t_after values NEW"
+  puts t_after
+  ts.take(t_after)
 
 end
 
 server.add_handler '_rd' do |t|
-  ts.read(t)
+  t_after = []
+  for i in t
+    if(i.instance_of? Hash)
+      i = Module.const_get(i["class"])
+    end
+    t_after.append(i)
+  end
+  ts.read(t_after)
 end
 
 puts "Starting Server..."
