@@ -4,7 +4,7 @@ with xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True) as prox
     print("Proxy made...")
 
     tuples = [
-      ["alice","distsys","This graph theory stuff is not easy"],
+      ["alice","gtcn","This graph theory stuff is not easy"],
       ["alice","distsys","I like systems more than graphs"]
     ]
 
