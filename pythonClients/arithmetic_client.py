@@ -22,8 +22,8 @@ with xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True) as prox
 
     print("Tuples Sent...")
 
-    print(proxy._in(tupleResAbstract))
-    print(proxy._in(tupleResAbstract))
-    print(proxy._in(tupleResAbstract))
-    print(proxy._in(tupleResAbstract))
-    print(proxy._in(tupleResAbstract))
+    print(proxy._in(tupleResAbstract)[0])
+    print(proxy._in(tupleResAbstract)[0])
+    print(proxy._in(tupleResAbstract)[0])
+    print(proxy._in(tupleResAbstract)[0])
+    print(proxy._in(tupleResAbstract)[0])

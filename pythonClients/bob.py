@@ -1,13 +1,13 @@
 import xmlrpc.client
 
-with xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True) as proxy:
+with xmlrpc.client.ServerProxy("http://localhost:5000") as proxy:
     print("Proxy made...")
 
     tuples = [
       ["bob","distsys","I am studying chapter 2"],
-      ["bob","distsys","The rinda exmaple's not that simple"]
-      ["bob","distsys",1234]
-      ["bob","None",6675866]
+      ["bob","distsys","The rinda exmaple's not that simple"],
+      ["bob","distsys","ehhh...."],
+      ["bob","distsys","It's only a distributed systems model..."],
     ]
 
     print("Tuples Ready...")
