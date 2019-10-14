@@ -1,15 +1,15 @@
 import xmlrpc.client
 
-proxy = xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True)
+proxy = xmlrpc.client.ServerProxy("http://localhost:5000")
 
 print("Waiting on tuples...")
 
 arguments = [
-    proxy._in([None, None, None]),
-    proxy._in([None, None, None]),
-    proxy._in([None, None, None]),
-    proxy._in([None, None, None]),
-    proxy._in([None, None, None]),
+    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
+    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
+    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
+    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
+    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
 ]
 
 print("Tuples received...")

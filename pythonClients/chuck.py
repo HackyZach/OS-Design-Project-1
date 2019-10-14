@@ -1,6 +1,6 @@
 import xmlrpc.client
 
-proxy = xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True)
+proxy = xmlrpc.client.ServerProxy("http://localhost:5000")
 
 #res = proxy._in(["bob", { 'class': 'String' }, { 'class': 'String' }])
 #res2 = proxy._in([{ 'class': 'String' }, "distsys", { 'class': 'String' }])
