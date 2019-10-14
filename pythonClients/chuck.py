@@ -1,22 +1,16 @@
 import xmlrpc.client
 
-proxy = xmlrpc.client.ServerProxy("http://localhost:5000")
+with xmlrpc.client.ServerProxy("http://localhost:5000") as proxy:
+    print("Waiting on tuples...")
 
-#res = proxy._in(["bob", { 'class': 'String' }, { 'class': 'String' }])
-#res2 = proxy._in([{ 'class': 'String' }, "distsys", { 'class': 'String' }])
+    res = proxy._rd(["bob", "distsys", { 'class': 'String' } ])
+    res2 = proxy._rd(["alice" , "gtcn", { 'class': 'String'} ])
+    res3 = proxy._rd(["bob" , "gtcn", { 'class': 'String'} ])
 
-print("Waiting on tuples...")
+    print("Sent tuples...")
 
-res = proxy._in([{ 'class': 'String'}, "distsys", { 'class': 'String' }])
-res2 = proxy._in([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
-res3 = proxy._in([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
-res4 = proxy._in([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
+    print(res)
+    print(res2)
+    print(res3)
 
-print("Sent tuples...")
-
-print(res)
-print(res2)
-print(res3)
-print(res4)
-
-print("Tuples received...")
+    print("Tuples received...")

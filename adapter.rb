@@ -25,14 +25,22 @@ server.add_handler '_out' do |t|
   "OK"
 end
 
+#XMLRPC::Convert.struct(i)#
+
 server.add_handler '_in' do |t|
   t_after = []
+  puts "The _in begins here: "
+  puts "t array = ", t
+  puts "t_after array = ", t_after
   for i in t
     if(i.instance_of? Hash)
+      puts i
       i = Module.const_get(i["class"])
+      puts i
     end
     t_after.append(i)
   end
+  puts "t_after array = ", t_after
   ts.take(t_after)
 
 end
@@ -46,6 +54,24 @@ server.add_handler '_rd' do |t|
     t_after.append(i)
   end
   ts.read(t_after)
+end
+
+server.add_handler '_rd_a' do |t|
+  t_after = []
+  # puts "The _in begins here: "
+  # puts "t array = ", t
+  # puts "t_after array = ", t_after
+  for i in t
+    if(i.instance_of? Hash)
+      #puts i
+      i = Module.const_get(i["class"])
+      #puts i
+    end
+    t_after.append(i)
+  end
+  ts_res = ts.take(t_after)
+  ts.write(ts_res)
+  ts_res
 end
 
 puts "Starting Server..."
