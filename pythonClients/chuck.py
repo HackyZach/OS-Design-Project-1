@@ -7,10 +7,10 @@ proxy = xmlrpc.client.ServerProxy("http://localhost:5000")
 
 print("Waiting on tuples...")
 
-res = proxy._in([{ 'class': 'String'}, "distsys", { 'class': 'String' }])
-res2 = proxy._in([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
-res3 = proxy._in([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
-res4 = proxy._in([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
+res = proxy._rd([{ 'class': 'String'}, "distsys", { 'class': 'String' }])
+res2 = proxy._rd([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
+res3 = proxy._rd([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
+res4 = proxy._rd([{ 'class': 'String'} , "distsys", { 'class': 'String'} ])
 
 print("Sent tuples...")
 
