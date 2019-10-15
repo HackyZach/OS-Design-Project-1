@@ -29,18 +29,12 @@ end
 
 server.add_handler '_in' do |t|
   t_after = []
-  puts "The _in begins here: "
-  puts "t array = ", t
-  puts "t_after array = ", t_after
   for i in t
     if(i.instance_of? Hash)
-      puts i
       i = Module.const_get(i["class"])
-      puts i
     end
     t_after.append(i)
   end
-  puts "t_after array = ", t_after
   ts.take(t_after)
 
 end

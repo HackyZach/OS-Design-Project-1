@@ -11,7 +11,7 @@ with xmlrpc.client.ServerProxy("http://localhost:5000", allow_none=True) as prox
       ["^", 10, 4],
     ]
 
-    tupleResAbstract = [None,"eqRes"]
+    tupleResAbstract = [{'class': 'String'},"eqRes"]
     print("Tuples Ready...")
 
     proxy._out(tuples[0])

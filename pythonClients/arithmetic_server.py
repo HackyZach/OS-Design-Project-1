@@ -2,40 +2,29 @@ import xmlrpc.client
 
 proxy = xmlrpc.client.ServerProxy("http://localhost:5000")
 
-print("Waiting on tuples...")
-
-arguments = [
-    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
-    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
-    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
-    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
-    proxy._in([{ 'class': 'String' }, { 'class': 'Numeric'}, { 'class': 'Numeric'}]),
-]
-
-print("Tuples received...")
-
-result = []
 lhs = 0
 rhs = 0
-for equation in arguments:
-    rhs = str(equation[1]) + ' ' + str(equation[0]) + ' ' + str(equation[2])
+condition = True
+while condition:
+    print("Waiting on tuples...")
+    arguments = [proxy._in([{'class': 'String'}, {'class': 'Numeric'}, {'class': 'Numeric'}])]
 
-    if equation[0] == '*':
-        lhs = str(equation[1] * equation[2])
-    elif equation[0] == '+':
-        lhs = str(equation[1] + equation[2])
-    elif equation[0] == '-':
-        lhs = str(equation[1] - equation[2])
-    elif equation[0] == '%':
-        lhs = str(equation[1] % equation[2])
-    elif equation[0] == '^':
-        lhs = str(equation[1] ^ equation[2])
-    else:
-        lhs = "Invalid operator"
+    for equation in arguments:
+        rhs = str(equation[1]) + ' ' + str(equation[0]) + ' ' + str(equation[2])
 
-    result.append([(lhs + " = " + rhs),"eqRes"])
+        if equation[0] == '*':
+            lhs = str(equation[1] * equation[2])
+        elif equation[0] == '+':
+            lhs = str(equation[1] + equation[2])
+        elif equation[0] == '-':
+            lhs = str(equation[1] - equation[2])
+        elif equation[0] == '%':
+            lhs = str(equation[1] % equation[2])
+        elif equation[0] == '^':
+            lhs = str(equation[1] ^ equation[2])
+        else:
+            lhs = "Invalid operator"
 
-for complete_equation in result:
-    proxy._out(complete_equation)
+    proxy._out([(lhs + " = " + rhs),"eqRes"])
 
-print("Tuples computed and sent back...")
+    print("Tuples computed and sent back...")
